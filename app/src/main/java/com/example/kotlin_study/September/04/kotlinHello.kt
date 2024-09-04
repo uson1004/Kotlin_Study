@@ -1,5 +1,4 @@
-package com.example.kotlin_study.first
-
+package com.example.Kotlin_study
 
 // 클래스 이름은 파스칼 케이스
 // 함수나 변수는 카멜 케이스

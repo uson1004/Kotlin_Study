@@ -1,4 +1,4 @@
-package com.example.kotlin_study.third
+package com.example.Kotlin_Study.september.`04`
 
 fun main() {
     var intValue: Int = 100
