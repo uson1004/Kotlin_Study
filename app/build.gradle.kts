@@ -51,4 +51,9 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    implementation ("com.github.bumptech.glide:glide:4.14.2")
+    implementation ("com.squareup.picasso:picasso:2.8")
+
+    implementation ("androidx.viewpager2:viewpager2:1.0.0")
 }

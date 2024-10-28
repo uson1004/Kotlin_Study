@@ -27,6 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/black"
+                android:maxLines="1"
                 android:backgroundTintMode="add"
                 />
         </com.google.android.material.textfield.TextInputLayout>
@@ -43,6 +44,16 @@
             android:layout_height="wrap_content"
             android:text="TextView"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <ImageView
+            android:id="@+id/img_list_img"
+            android:layout_width="match_parent"
+            android:layout_height="100dp" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="100dp" />
     </LinearLayout>
 </layout>
 

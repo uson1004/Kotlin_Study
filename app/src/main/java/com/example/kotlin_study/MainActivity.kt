@@ -1,17 +1,33 @@
 package com.example.kotlin_study
 
+import android.app.Activity
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.PickVisualMediaRequest
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.widget.addTextChangedListener
 import com.example.kotlin_study.databinding.ActivityMainBinding
+import com.squareup.picasso.Picasso
+import java.net.URL
 
 class MainActivity : AppCompatActivity() {
     private val activityMainBinding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
+    }
+
+    val pickMedia = registerForActivityResult(ActivityResultContracts.PickMultipleVisualMedia(5)) { uris ->
+        if (uris.isNotEmpty()) {
+            Log.d("TEST", "Number of items selected: ${uris.size}")
+            loadImage(uris[0])
+        } else {
+            Log.d("PhotoPicker", "No media selected")
+        }
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,8 +73,16 @@ class MainActivity : AppCompatActivity() {
                     if (emailPattern) {
                         Log.d("TEST", "이메일 형식이 맞습니다")
                     }
+
+                    pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
                 }
             }
         }
+    }
+
+    private fun loadImage(uri: Uri) {
+        Picasso.get()
+            .load(uri)
+            .into(activityMainBinding.imgListImg)
     }
 }
