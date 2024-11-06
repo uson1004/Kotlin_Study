@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.widget.addTextChangedListener
+import com.bumptech.glide.Glide
 import com.example.kotlin_study.databinding.ActivityMainBinding
 import com.squareup.picasso.Picasso
 import java.net.URL
@@ -20,10 +21,10 @@ class MainActivity : AppCompatActivity() {
         ActivityMainBinding.inflate(layoutInflater)
     }
 
-    val pickMedia = registerForActivityResult(ActivityResultContracts.PickMultipleVisualMedia(5)) { uris ->
+    private val pickMedia = registerForActivityResult(ActivityResultContracts.PickMultipleVisualMedia(5)) { uris ->
         if (uris.isNotEmpty()) {
             Log.d("TEST", "Number of items selected: ${uris.size}")
-            loadImage(uris[0])
+            //loadImage(uris[0])
         } else {
             Log.d("PhotoPicker", "No media selected")
         }
@@ -77,12 +78,8 @@ class MainActivity : AppCompatActivity() {
                     pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
                 }
             }
-        }
-    }
 
-    private fun loadImage(uri: Uri) {
-        Picasso.get()
-            .load(uri)
-            .into(activityMainBinding.imgListImg)
+
+        }
     }
 }
